@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
+use App\Http\Controllers\convertController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
@@ -50,6 +51,11 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/profile', [profile::class, 'index'])->name('profile');
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
     Route::post('/changePasswordReq', [profile::class, 'changePasswordReq'])->name('changePasswordReq');
+    
+    // Convert USD To Token
+    Route::get('/usd-token', [convertController::class, 'usdToToken'])->name('usdToToken');
+    Route::post('/usd-token', [convertController::class, 'usdToTokenReq'])->name('usdToTokenReq');
+
 });
 
 

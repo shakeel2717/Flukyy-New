@@ -338,6 +338,20 @@
 
                         <!-- Dashboards -->
                         <li class="nav-item">
+                            <small class="nav-subtitle" title="Layouts">Convert</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('usdToToken') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-sync nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">USD to Token</span>
+                            </a>
+                        </li>
+
+                        <!-- Dashboards -->
+                        <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">My Account</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
