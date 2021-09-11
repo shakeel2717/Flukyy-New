@@ -424,14 +424,9 @@
                     <div class="col-sm-auto">
                         <!-- Dropdown -->
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add New RMA
+                            <button class="btn btn-primary " type="button">
+                                Contest Section
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="">RMA for Supplier</a>
-                                <a class="dropdown-item" href="">RMA for Customer</a>
-                            </div>
                         </div>
                         <!-- End Dropdown -->
                     </div>
