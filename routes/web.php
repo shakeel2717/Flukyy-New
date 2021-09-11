@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
+use App\Models\transaction;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'authentication/login');
@@ -53,7 +54,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/authenticate/login', [adminAuth::class, 'login'])->name('adminLogin');
+    Route::get('/authenticate/login', [adminAuth::class, 'login'])->name('adminlogin');
     Route::post('/authenticate/login', [adminAuth::class, 'loginReq'])->name('adminLoginReq');
 });
 
@@ -63,4 +64,6 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/index', [adminDashboard::class, 'index'])->name('adminDashboard');
     Route::get('/all-users', [adminDashboard::class, 'allUsers'])->name('allUsers');
     Route::get('/all-supports', [adminDashboard::class, 'allSupports'])->name('allSupports');
+    Route::get('/insert-balance', [adminDashboard::class, 'insertBalance'])->name('insertBalance');
+    Route::post('/insert-balance', [adminDashboard::class, 'insertBalanceReq'])->name('insertBalanceReq');
 });

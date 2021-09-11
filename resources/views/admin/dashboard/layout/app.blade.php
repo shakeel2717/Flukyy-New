@@ -217,13 +217,13 @@
                                 <div class="card-body card-body-height">
                                     <!-- Nav -->
                                     <div class="nav nav-pills flex-column">
-                                        <a class="nav-link" href="{{ route('addDevice') }}">
+                                        <a class="nav-link" href="#">
                                             <div class="media align-items-center">
                                                 <span class="avatar avatar-xs avatar-soft-dark mr-3">
                                                     <span class="avatar-initials"><i class="tio-apps"></i></span>
                                                 </span>
                                                 <div class="media-body text-truncate">
-                                                    <span class="h5 mb-0">Add New Device</span>
+                                                    <span class="h5 mb-0">Add Balance</span>
                                                     <span class="d-block font-size-sm text-body">Click to Add new
                                                         Device</span>
                                                 </div>
@@ -280,11 +280,7 @@
                                         account</span>
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('company') }}">
-                                    <span class="text-truncate pr-2" title="Profile &amp; account">
-                                        Business</span>
-                                </a>
-
+                                
                                 <a class="dropdown-item" href="{{ route('profile') }}">
                                     <span class="text-truncate pr-2" title="Settings">Settings</span>
                                 </a>
@@ -335,6 +331,15 @@
                         </li>
 
                         <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('insertBalance') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add Balance</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allUsers') }}" title="Layouts"
                                 data-placement="left">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
@@ -380,13 +385,14 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{ route('addDevice') }}">
-                            <i class="tio-add mr-1"></i> Add Device
+                        <a class="btn btn-primary" href="#">
+                            <i class="tio-add mr-1"></i> Add Balance
                         </a>
                     </div>
                 </div>
             </div>
             <!-- End Page Header -->
+            <x-alert />
             @yield('content')
         </div>
         <!-- End Content -->
