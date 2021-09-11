@@ -350,6 +350,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('tokenToUsd') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-sync nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Token to USD</span>
+                            </a>
+                        </li>
+
                         <!-- Dashboards -->
                         <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">My Account</small>
@@ -447,6 +455,7 @@
                 </div>
             </div>
             <!-- End Page Header -->
+            <x-alert />
             @yield('content')
         </div>
         <!-- End Content -->

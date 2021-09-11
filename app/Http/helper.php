@@ -37,6 +37,7 @@ function balanceToken()
 {
     // gettin gall Balance In
     $queryIn = transaction::where('sum','In')->tokenBalance()->sum('amount');
-    return $queryIn;
+    $queryOut = transaction::where('sum','Out')->tokenBalance()->sum('amount');
+    return $queryIn - $queryOut;
 }
 ?>

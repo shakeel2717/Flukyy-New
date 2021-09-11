@@ -56,6 +56,10 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/usd-token', [convertController::class, 'usdToToken'])->name('usdToToken');
     Route::post('/usd-token', [convertController::class, 'usdToTokenReq'])->name('usdToTokenReq');
 
+    Route::get('/token-usd', [convertController::class, 'tokenToUsd'])->name('tokenToUsd');
+    Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
+
+
 });
 
 
