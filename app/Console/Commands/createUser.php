@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\admin;
+use App\Models\contest;
 use App\Models\Customer;
 use App\Models\Supplier;
 use App\Models\users;
@@ -50,6 +51,14 @@ class createUser extends Command
             'email' => 'basharat604@gmail.com',
             'password' => 'asdfasdf',
             'status' => 'Active',
+        ]);
+
+
+        contest::create([
+            'contest' => "XFXS5DF4S6D5F4S",
+            'price' => 50,
+            'status' => "Active",
+            'participate' => 100,
         ]);
 
 

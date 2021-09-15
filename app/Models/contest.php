@@ -9,6 +9,14 @@ class contest extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        'contest',
+        'price',
+        'status',
+        'participate',
+    ];
+
     public function participators()
     {
         return $this->hasMany(participate::class);
