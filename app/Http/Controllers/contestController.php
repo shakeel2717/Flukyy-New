@@ -45,11 +45,17 @@ class contestController extends Controller
         if (count($contestActive) < 1 ) {
             return redirect()->back()->withErrors('No Active Contest Found, Please Visit later.');
         }
+
+        // checking if token balance is enough
+        if (balanceToken() < $contestActive[0]->price) {
+            return redirect()->back()->withErrors('Insufficient Token Balance.');
+        }
         // checking if this user alrady participated in this Contest
         $alreadyContestParticipate = participate::where('users_id',session('user')[0]->id)->count();
         if ($alreadyContestParticipate > 0) {
             return redirect()->back()->withErrors('You already Particpated into This Contest.');
         }
+
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;

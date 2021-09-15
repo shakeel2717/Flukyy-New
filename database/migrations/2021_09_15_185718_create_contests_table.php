@@ -15,10 +15,10 @@ class CreateContestsTable extends Migration
     {
         Schema::create('contests', function (Blueprint $table) {
             $table->id();
-            $table->string('contest');
+            $table->string('contest')->unique();
             $table->string('price');
             $table->string('status');
-            $table->string('participate');
+            $table->integer('participate');
             $table->string('exp_date')->nullable();
             $table->timestamps();
         });
