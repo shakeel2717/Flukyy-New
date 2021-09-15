@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\Support;
 use App\Models\transaction;
 use App\Models\users;
@@ -12,21 +13,22 @@ class adminDashboard extends Controller
     public function index()
     {
 
-        return view('admin.dashboard.index',[
+        return view('admin.dashboard.index', [
             'totalUsers' => users::get(),
+            'adminQuery' => admin::first(),
         ]);
     }
 
     public function allUsers()
     {
-        return view('admin.dashboard.allUsers',[
+        return view('admin.dashboard.allUsers', [
             'allUsers' => users::get(),
         ]);
     }
 
     public function allSupports()
     {
-        return view('admin.dashboard.allSupports',[
+        return view('admin.dashboard.allSupports', [
             'allSupports' => Support::get(),
         ]);
     }
@@ -55,7 +57,4 @@ class adminDashboard extends Controller
         $task->save();
         return redirect()->back()->with('message', 'Balance Added into User Accont Successfully');
     }
-
-
-
 }

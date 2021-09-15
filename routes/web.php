@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
+use App\Http\Controllers\contestController;
 use App\Http\Controllers\convertController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\profile;
@@ -76,4 +77,6 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/all-supports', [adminDashboard::class, 'allSupports'])->name('allSupports');
     Route::get('/insert-balance', [adminDashboard::class, 'insertBalance'])->name('insertBalance');
     Route::post('/insert-balance', [adminDashboard::class, 'insertBalanceReq'])->name('insertBalanceReq');
+    Route::post('/contestStore', [contestController::class, 'store'])->name('contest.store');
+    
 });

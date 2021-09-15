@@ -16,7 +16,7 @@ class createUser extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user';
+    protected $signature = 'make:clean';
 
     /**
      * The console command description.
@@ -46,6 +46,8 @@ class createUser extends Command
         admin::create([
             'username' => 'test',
             'password' => 'test',
+            'contest' => 50,
+            'withdraw' => 10,
         ]);
 
         
