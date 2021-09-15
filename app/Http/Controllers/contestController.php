@@ -46,7 +46,7 @@ class contestController extends Controller
         if (count($contestActive) < 1 ) {
             return redirect()->back()->withErrors('No Active Contest Found, Please Visit later.');
         }
-
+        
         // checking if token balance is enough
         if (balanceToken() < $contestActive[0]->price) {
             return redirect()->back()->withErrors('Insufficient Token Balance.');
@@ -56,7 +56,12 @@ class contestController extends Controller
         if ($alreadyContestParticipate > 0) {
             return redirect()->back()->withErrors('You already Participated into This Contest.');
         }
-
+        
+        // checking if any free space in Contest
+        if ($contestActive[0]->participate <= count($contestActive[0]->participators)) {
+            return redirect()->back()->withErrors('Sorry, There is no Free Space avaible for Participate.');
+        }
+        
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;
