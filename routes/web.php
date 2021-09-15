@@ -59,6 +59,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::get('/token-usd', [convertController::class, 'tokenToUsd'])->name('tokenToUsd');
     Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
+    
+    Route::post('/contestParticepateReq', [contestController::class, 'contestParticepateReq'])->name('contestParticepateReq');
+    
 
 
 });

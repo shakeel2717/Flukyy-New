@@ -188,17 +188,10 @@
                     <h6 class="card-subtitle mb-2">Particepate In Fluke</h6>
                     <hr>
                     <p>Participate Price: {{ $adminQuery->contest }} Token</p>
-                    <p>Current Contest ID: SXCSADFSDF</p>
+                    <p>Current Contest ID: {{$Activecontest->contest ?? "No Contest Active"}}</p>
                 </div>
-                <form action="{{ route('tokenToUsdReq') }}" method="POST">
+                <form action="{{ route('contestParticepateReq') }}" method="POST">
                     @csrf
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="">Token Amount to Convert</label>
-                            <input type="text" name="amount" id="amount" class="form-control"
-                                placeholder="Token Amount to Convert">
-                        </div>
-                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <input type="submit" class="btn btn-block btn-primary" value="Particepate now">

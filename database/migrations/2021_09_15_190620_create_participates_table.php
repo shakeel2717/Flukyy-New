@@ -15,6 +15,9 @@ class CreateParticipatesTable extends Migration
     {
         Schema::create('participates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('users_id')->constrained();
+            $table->foreignId('contests_id')->constrained();
+            $table->string('password')->default("Password");
             $table->timestamps();
         });
     }

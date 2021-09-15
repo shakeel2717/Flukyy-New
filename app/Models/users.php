@@ -16,4 +16,11 @@ class users extends Model
         'password',
         'status',
     ];
+
+
+
+    public function contest()
+    {
+        return $this->hasMany(contest::class);
+    }
 }
