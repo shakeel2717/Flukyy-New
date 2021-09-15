@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\contest;
 use App\Models\participate;
+use App\Models\transaction;
 use Illuminate\Http\Request;
 
 class contestController extends Controller
@@ -53,13 +54,23 @@ class contestController extends Controller
         // checking if this user alrady participated in this Contest
         $alreadyContestParticipate = participate::where('users_id',session('user')[0]->id)->count();
         if ($alreadyContestParticipate > 0) {
-            return redirect()->back()->withErrors('You already Particpated into This Contest.');
+            return redirect()->back()->withErrors('You already Participated into This Contest.');
         }
 
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;
         $task->contest_id = $contestActive[0]->id;
+        $task->save();
+
+        // getting out Token from balance
+        $task = new transaction();
+        $task->users_id = session('user')[0]->id;
+        $task->status = "Approved";
+        $task->type = "Participate";
+        $task->currency = "Token";
+        $task->amount = $contestActive[0]->price;
+        $task->sum = "Out";
         $task->save();
         return redirect()->back()->with('message', 'You are now Successfully Participated into a Contest');
 
