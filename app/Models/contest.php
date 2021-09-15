@@ -9,7 +9,7 @@ class contest extends Model
 {
     use HasFactory;
 
-    public function participate()
+    public function participators()
     {
         return $this->hasMany(participate::class);
     }

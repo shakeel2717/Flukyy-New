@@ -48,7 +48,7 @@ class contestController extends Controller
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;
-        $task->contests_id = $contestActive[0]->id;
+        $task->contest_id = $contestActive[0]->id;
         $task->save();
         return redirect()->back()->with('message', 'You are now Successfully Participated into a Contest');
 

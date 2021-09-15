@@ -11,10 +11,8 @@ class dashboard extends Controller
 {
     public function index()
     {
-        $adminQuery = admin::first();
         $Activecontest = contest::where('status','Active')->first();
         return view('dashboard.index',[
-            'adminQuery' => $adminQuery,
             'Activecontest' => $Activecontest,
         ]);
     }

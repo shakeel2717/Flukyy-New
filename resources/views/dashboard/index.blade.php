@@ -33,9 +33,9 @@
                         <div class="col">
                             <span class="js-counter display-4 text-dark" data-value="12">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                                userTransactions()->where('currency', 'USD')->where('type', 'Deposit')->sum('amount'),
-                                2,
-                            ) }}
+    userTransactions()->where('currency', 'USD')->where('type', 'Deposit')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
                     </div>
@@ -55,9 +55,9 @@
                         <div class="col">
                             <span class="js-counter display-4 text-dark" data-value="56">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                            userTransactions()->where('currency', 'USD')->where('sum', 'Out')->sum('amount'),
-                            2,
-                        ) }}
+    userTransactions()->where('currency', 'USD')->where('sum', 'Out')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
                     </div>
@@ -77,9 +77,9 @@
                         <div class="col">
                             <span class="js-counter display-4 text-dark" data-value="28">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                                userTransactions()->where('currency', 'USD')->where('type', 'Withdraw')->sum('amount'),
-                                2,
-                            ) }}
+    userTransactions()->where('currency', 'USD')->where('type', 'Withdraw')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
 
@@ -122,9 +122,9 @@
                             <span class="js-counter display-4 text-dark"
                                 data-value="12">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                                userTransactions()->where('currency', 'Token')->where('type', 'Deposit')->sum('amount'),
-                                2,
-                            ) }}
+    userTransactions()->where('currency', 'Token')->where('type', 'Deposit')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
                     </div>
@@ -145,9 +145,9 @@
                             <span class="js-counter display-4 text-dark"
                                 data-value="56">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                                userTransactions()->where('currency', 'Token')->where('sum', 'Out')->sum('amount'),
-                                2,
-                            ) }}
+    userTransactions()->where('currency', 'Token')->where('sum', 'Out')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
                     </div>
@@ -168,9 +168,9 @@
                             <span class="js-counter display-4 text-dark"
                                 data-value="28">{{ env('APP_CURRENCY_SYMBOL') }}:
                                 {{ number_format(
-                                        userTransactions()->where('currency', 'Token')->where('type', 'Withdraw')->sum('amount'),
-                                        2,
-                                    ) }}
+    userTransactions()->where('currency', 'Token')->where('type', 'Withdraw')->sum('amount'),
+    2,
+) }}
                                 {{ env('APP_CURRENCY') }}</span>
                         </div>
 
@@ -187,8 +187,8 @@
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2">Particepate In Fluke</h6>
                     <hr>
-                    <p>Participate Price: {{ $adminQuery->contest }} Token</p>
-                    <p>Current Contest ID: {{$Activecontest->contest ?? "No Contest Active"}}</p>
+                    <p>Participate Price: {{ $Activecontest->price ?? 'No Contest Active' }} Token</p>
+                    <p>Current Contest ID: {{ $Activecontest->contest ?? 'No Contest Active' }}</p>
                 </div>
                 <form action="{{ route('contestParticepateReq') }}" method="POST">
                     @csrf
@@ -199,6 +199,120 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="col-lg-6">
+            <!-- Card -->
+            <div class="card h-100">
+                <!-- Header -->
+                <div class="card-header">
+                    <h5 class="card-header-title">Reports overview</h5>
+
+                    <!-- Unfold -->
+                    <div class="hs-unfold">
+                        <a class="js-hs-unfold-invoker btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
+                            href="javascript:;" data-hs-unfold-options="{
+                                       &quot;target&quot;: &quot;#reportsOverviewDropdown1&quot;,
+                                       &quot;type&quot;: &quot;css-animation&quot;
+                                     }" data-hs-unfold-target="#reportsOverviewDropdown1" data-hs-unfold-invoker="">
+                            <i class="tio-more-vertical"></i>
+                        </a>
+
+                        <div id="reportsOverviewDropdown1"
+                            class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right mt-1 hs-unfold-hidden hs-unfold-content-initialized hs-unfold-css-animation animated hs-unfold-reverse-y"
+                            data-hs-target-height="243" data-hs-unfold-content=""
+                            data-hs-unfold-content-animation-in="slideInUp" data-hs-unfold-content-animation-out="fadeOut"
+                            style="animation-duration: 300ms;">
+                            <span class="dropdown-header">Settings</span>
+
+                            <a class="dropdown-item" href="#">
+                                <i class="tio-share dropdown-item-icon"></i> Share reports
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="tio-download-to dropdown-item-icon"></i> Download
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="tio-alt dropdown-item-icon"></i> Connect other apps
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <span class="dropdown-header">Feedback</span>
+
+                            <a class="dropdown-item" href="#">
+                                <i class="tio-chat-outlined dropdown-item-icon"></i> Report
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Unfold -->
+                </div>
+                <!-- End Header -->
+
+                <!-- Body -->
+                <div class="card-body">
+                    <span class="h1 d-block mb-4">{{ count($Activecontest->participators) }} Participators</span>
+
+                    <div class="progress h-25">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <span>0%</span>
+                        <span>100%</span>
+                    </div>
+                    <!-- End Progress -->
+
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="table table-lg table-nowrap card-table mb-0">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span class="legend-indicator bg-primary"></span>Gross value
+                                    </th>
+                                    <td>$3,500.71</td>
+                                    <td>
+                                        <span class="badge badge-soft-success">+12.1%</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="legend-indicator bg-primary opacity"></span>Net volume from sales
+                                    </th>
+                                    <td>$2,980.45</td>
+                                    <td>
+                                        <span class="badge badge-soft-warning">+6.9%</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="legend-indicator bg-primary opacity-xs"></span>New volume from sales
+                                    </th>
+                                    <td>$950.00</td>
+                                    <td>
+                                        <span class="badge badge-soft-danger">-1.5%</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <span class="legend-indicator"></span>Other
+                                    </th>
+                                    <td>32</td>
+                                    <td>
+                                        <span class="badge badge-soft-success">1.9%</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End Table -->
+                </div>
+                <!-- End Body -->
+            </div>
+            <!-- End Card -->
         </div>
     </div>
 @endsection
