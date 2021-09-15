@@ -252,67 +252,16 @@
                     <span class="h1 d-block mb-4">{{ count($Activecontest->participators) }} Participators</span>
 
                     <div class="progress h-25">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">25%</div>
+                        <div class="progress-bar" role="progressbar" style="width: {{ count($Activecontest->participators) }}%;" aria-valuenow="{{ count($Activecontest->participators) }}"
+                            aria-valuemin="0" aria-valuemax="100">{{ count($Activecontest->participators) }}</div>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
-                        <span>0%</span>
-                        <span>100%</span>
+                        <span>{{ count($Activecontest->participators) }}</span>
+                        <span>{{$Activecontest->participate}}</span>
                     </div>
-                    <!-- End Progress -->
-
-                    <!-- Table -->
-                    <div class="table-responsive">
-                        <table class="table table-lg table-nowrap card-table mb-0">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <span class="legend-indicator bg-primary"></span>Gross value
-                                    </th>
-                                    <td>$3,500.71</td>
-                                    <td>
-                                        <span class="badge badge-soft-success">+12.1%</span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <span class="legend-indicator bg-primary opacity"></span>Net volume from sales
-                                    </th>
-                                    <td>$2,980.45</td>
-                                    <td>
-                                        <span class="badge badge-soft-warning">+6.9%</span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <span class="legend-indicator bg-primary opacity-xs"></span>New volume from sales
-                                    </th>
-                                    <td>$950.00</td>
-                                    <td>
-                                        <span class="badge badge-soft-danger">-1.5%</span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <span class="legend-indicator"></span>Other
-                                    </th>
-                                    <td>32</td>
-                                    <td>
-                                        <span class="badge badge-soft-success">1.9%</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- End Table -->
                 </div>
-                <!-- End Body -->
             </div>
-            <!-- End Card -->
         </div>
     </div>
 @endsection
