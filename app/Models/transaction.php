@@ -24,4 +24,9 @@ class transaction extends Model
     {
         return $query->where('currency', 'Token')->where('users_id', session('user')[0]->id);
     }
+
+    public function scopeRewardBalance($query)
+    {
+        return $query->where('currency', 'Reward')->where('users_id', session('user')[0]->id);
+    }
 }

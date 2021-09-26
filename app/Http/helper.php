@@ -25,6 +25,15 @@ function balanceUSD()
 }
 
 
+function balanceReward()
+{
+    // gettin gall Balance In
+    $queryIn = transaction::where('sum','In')->rewardBalance()->sum('amount');
+    $queryOut = transaction::where('sum','Out')->rewardBalance()->sum('amount');
+    return $queryIn - $queryOut;
+}
+
+
 function userTransactions()
 {
     // gettin gall Balance In

@@ -49,16 +49,11 @@
             <!-- Card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Total Used USD</h6>
+                    <h6 class="card-subtitle mb-2">Total Reward Point</h6>
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
-                            <span class="js-counter display-4 text-dark" data-value="56">{{ env('APP_CURRENCY_SYMBOL') }}:
-                                {{ number_format(
-    userTransactions()->where('currency', 'USD')->where('sum', 'Out')->sum('amount'),
-    2,
-) }}
-                                {{ env('APP_CURRENCY') }}</span>
+                            <span class="js-counter display-4 text-dark" data-value="56">{{ number_format(balanceReward(),2) }}</span>
                         </div>
                     </div>
                     <!-- End Row -->

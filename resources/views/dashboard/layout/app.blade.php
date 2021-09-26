@@ -32,8 +32,8 @@
                     <i class="tio-search"></i>
                 </div>
             </div>
-            <input class="form-control rounded-0" type="search" placeholder="Search in front"
-                aria-label="Search in front">
+            <input class="form-control rounded-0" type="search" placeholder="Search in Fluke"
+                aria-label="Search in Fluke">
             <div class="input-group-append">
                 <div class="input-group-text">
                     <div class="hs-unfold">
@@ -86,8 +86,8 @@
                                     <i class="tio-search"></i>
                                 </div>
                             </div>
-                            <input type="search" class="js-form-search form-control" placeholder="Search in front"
-                                aria-label="Search in front" data-hs-form-search-options='{
+                            <input type="search" class="js-form-search form-control" placeholder="Search in Fluke"
+                                aria-label="Search in Fluke" data-hs-form-search-options='{
                            "clearIcon": "#clearSearchResultsIcon",
                            "dropMenuElement": "#searchDropdownMenu",
                            "dropMenuOffset": 20,

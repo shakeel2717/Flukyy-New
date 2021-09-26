@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\transaction;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,7 @@ class convertController extends Controller
 
     public function tokenToUsdReq(Request $request)
     {
+        $adminQuery = admin::get();
         $validated = $request->validate([
             'amount' => 'required|numeric',
         ]);
@@ -71,7 +73,7 @@ class convertController extends Controller
 
         // converting balance
         // getting Token Rate
-        $price = env('TOKEN_PRICE');
+        $price = $adminQuery[0]->token; // 0.55
         // converting balance into Token
         $calc = $validated['amount'] * $price;
 
@@ -83,6 +85,16 @@ class convertController extends Controller
         $task->currency = "Token";
         $task->amount = $validated['amount'];
         $task->sum = "Out";
+        $task->save();
+
+        // getting out Reward from balance
+        $task = new transaction();
+        $task->users_id = session('user')[0]->id;
+        $task->status = "Approved";
+        $task->type = "Convert";
+        $task->currency = "Reward";
+        $task->amount = $adminQuery[0]->reward;
+        $task->sum = "In";
         $task->save();
 
         // inserting USD Transaction

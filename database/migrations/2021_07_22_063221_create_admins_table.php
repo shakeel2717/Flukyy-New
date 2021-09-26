@@ -19,6 +19,8 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('contest');
             $table->string('withdraw');
+            $table->string('reward')->default(1);
+            $table->string('token')->default(0.55);
             $table->timestamps();
         });
     }
