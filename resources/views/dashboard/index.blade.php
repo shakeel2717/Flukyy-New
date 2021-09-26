@@ -156,7 +156,7 @@
             <!-- Card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Total Token Withdraw</h6>
+                    <h6 class="card-subtitle mb-2">Total Token Convert</h6>
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
