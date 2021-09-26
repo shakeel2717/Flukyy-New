@@ -53,9 +53,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
     Route::post('/changePasswordReq', [profile::class, 'changePasswordReq'])->name('changePasswordReq');
     
-    // Convert USD To Token
-    Route::get('/usd-token', [convertController::class, 'usdToToken'])->name('usdToToken');
-    Route::post('/usd-token', [convertController::class, 'usdToTokenReq'])->name('usdToTokenReq');
+    // // Convert USD To Token
+    // Route::get('/usd-token', [convertController::class, 'usdToToken'])->name('usdToToken');
+    // Route::post('/usd-token', [convertController::class, 'usdToTokenReq'])->name('usdToTokenReq');
 
     Route::get('/token-usd', [convertController::class, 'tokenToUsd'])->name('tokenToUsd');
     Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
