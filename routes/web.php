@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\contestController;
 use App\Http\Controllers\convertController;
 use App\Http\Controllers\dashboard;
@@ -56,10 +57,11 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     // // Convert USD To Token
     // Route::get('/usd-token', [convertController::class, 'usdToToken'])->name('usdToToken');
     // Route::post('/usd-token', [convertController::class, 'usdToTokenReq'])->name('usdToTokenReq');
-
+    
     Route::get('/token-usd', [convertController::class, 'tokenToUsd'])->name('tokenToUsd');
     Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
     
+    Route::resource('advertisement', AdvertisementController::class);
     Route::post('/contestParticepateReq', [contestController::class, 'contestParticepateReq'])->name('contestParticepateReq');
     
 

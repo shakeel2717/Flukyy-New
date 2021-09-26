@@ -96,7 +96,7 @@
                         <div class="col">
                             <span class="js-counter display-4 text-dark"
                                 data-value="24">{{ env('APP_CURRENCY_SYMBOL') }}:
-                                {{ number_format(balanceToken(), 2) }} {{ env('APP_CURRENCY') }}</span>
+                                {{ number_format(balanceToken(), 2) }} {{ env('APP_CURRENCY_TOKEN') }}</span>
                         </div>
 
                     </div>
@@ -120,7 +120,7 @@
     userTransactions()->where('currency', 'Token')->where('type', 'Deposit')->sum('amount'),
     2,
 ) }}
-                                {{ env('APP_CURRENCY') }}</span>
+                                {{ env('APP_CURRENCY_TOKEN') }}</span>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -143,7 +143,7 @@
     userTransactions()->where('currency', 'Token')->where('sum', 'Out')->sum('amount'),
     2,
 ) }}
-                                {{ env('APP_CURRENCY') }}</span>
+                                {{ env('APP_CURRENCY_TOKEN') }}</span>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -166,7 +166,7 @@
     userTransactions()->where('currency', 'Token')->where('type', 'Withdraw')->sum('amount'),
     2,
 ) }}
-                                {{ env('APP_CURRENCY') }}</span>
+                                {{ env('APP_CURRENCY_TOKEN') }}</span>
                         </div>
 
                     </div>

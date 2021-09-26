@@ -338,6 +338,20 @@
 
                         <!-- Dashboards -->
                         <li class="nav-item">
+                            <small class="nav-subtitle" title="Layouts">Advertisement</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('advertisement.index') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Today Ads</span>
+                            </a>
+                        </li>
+
+                        <!-- Dashboards -->
+                        <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">Convert</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>

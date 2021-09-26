@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\admin;
+use App\Models\advertisement;
 use App\Models\contest;
 use App\Models\Customer;
 use App\Models\Supplier;
@@ -67,6 +68,26 @@ class createUser extends Command
             'password' => 'test',
             'contest' => 50,
             'withdraw' => 10,
+        ]);
+
+
+        advertisement::create([
+            'title' => 'Google',
+            'url' => 'https://www.google.com/',
+            'price' => 1,
+        ]);
+
+        advertisement::create([
+            'title' => 'Ask',
+            'url' => 'https://www.ask.com/',
+            'price' => 1,
+        ]);
+
+
+        advertisement::create([
+            'title' => 'Yahoo',
+            'url' => 'https://www.yahoo.com/',
+            'price' => 1,
         ]);
 
         
