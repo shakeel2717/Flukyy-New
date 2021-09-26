@@ -24,6 +24,7 @@
                                     <select name="currency" id="currency" class="form-control">
                                         <option value="usd">USD</option>
                                         <option value="token">Token</option>
+                                        <option value="reward">Reward</option>
                                     </select>
                                 </div>
                             </div>
