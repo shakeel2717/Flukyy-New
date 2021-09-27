@@ -49,8 +49,8 @@ class contestController extends Controller
         }
 
         // checking if token balance is enough
-        if (balanceToken() < $contestActive[0]->price) {
-            return redirect()->back()->withErrors('Insufficient Token Balance.');
+        if (balanceReward() < $contestActive[0]->price) {
+            return redirect()->back()->withErrors('Insufficient Reward Point.');
         }
         // checking if this user alrady participated in this Contest
         $alreadyContestParticipate = participate::where('users_id', session('user')[0]->id)->count();
@@ -81,7 +81,7 @@ class contestController extends Controller
         $task->users_id = session('user')[0]->id;
         $task->status = "Approved";
         $task->type = "Participate";
-        $task->currency = "Token";
+        $task->currency = "Reward";
         $task->amount = $contestActive[0]->price;
         $task->sum = "Out";
         $task->save();
@@ -109,87 +109,5 @@ class contestController extends Controller
         }
 
         return redirect()->back()->with('message', 'You are now Successfully Participated into a Contest');
-    }
-
-    public function contestEnd()
-    {
-        // checking running contest
-        $contestActive = contest::where('status', 'Active')->first();
-        $contestActive->status = "Investigating";
-        $contestActive->save();
-        echo "Contest Status Update <br>";
-        //getting the winner
-        $users = DB::table('votes')->select('contestid', 'vote', DB::raw('COUNT(vote) as `Votes`'))->where('contestid', $contestid[0]->contestid)->groupBy('contestid', 'vote')->havingRaw('COUNT(*) > 1')->orderBy('votes', 'desc')->limit(1)->get();
-        $voteNumber = $users[0]->vote;
-        // hasing this vote
-        $voteNumberhashed = md5($voteNumber);
-        //checking who have this hash
-        $luckyQuery = DB::table('enrollments')->where('hash', $voteNumberhashed)->where('contestid', $users[0]->contestid)->get();
-        // fetched the email of users
-        if ($luckyQuery != "[]") {
-            // insering the balance to that user $1000 usd
-            $winnerAwards['email'] = $luckyQuery[0]->email;
-            $winnerAwards['note'] = "Flukyy Team";
-            $winnerAwards['amount'] = 1000;
-            $winnerAwards['status'] = "Approved";
-            $winnerAwards['contestid'] = $users[0]->contestid;
-            $winnerAwards['note'] = "Flukyy Contester";
-            Mail::to($luckyQuery[0]->email)->send(new flukyyUser());
-            //checking if already paid
-            $securityQuery = DB::table('flukyy')->where('email', $luckyQuery[0]->email)->where('contestid', $users[0]->contestid)->count();
-            if ($securityQuery > 0) {
-                return Redirect(route('dashboard'));
-                die();
-            }
-            DB::table('flukyy')->insert($winnerAwards);
-            //sending email to user
-            //chekcing if this user have a valid refer
-            $referUsername = DB::table('users')->where('email', $luckyQuery[0]->email)->get();
-            $referEmail = DB::table('users')->where('username', $referUsername[0]->refer)->get();
-            $referAwards['email'] = $referEmail[0]->email;
-            $referAwards['note'] = "Flukyy Refer";
-            $referAwards['amount'] = 50;
-            $referAwards['status'] = "Approved";
-            $referAwards['contestid'] = $users[0]->contestid;
-            $referAwards['note'] = "Flukyy Refer Award";
-            DB::table('flukyy')->insert($referAwards);
-            // checking from voters list
-            $luckyVotersQuery = DB::table('voters')->where('hash', $voteNumberhashed)->where('contestid', $users[0]->contestid)->get();
-            if ($luckyVotersQuery !== "[]") {
-                $winnerAwards['email'] = $luckyVotersQuery[0]->email;
-                $winnerAwards['amount'] = 100;
-                $winnerAwards['note'] = "Flukyy Voter";
-                $securityQuery = DB::table('flukyy')->where('email', $luckyVotersQuery[0]->email)->where('contestid', $users[0]->contestid)->count();
-                if ($securityQuery > 0) {
-                    return Redirect(route('dashboard'));
-                    die();
-                }
-                DB::table('flukyy')->insert($winnerAwards);
-                return Redirect(route('admin.dashboard'));
-            }
-        }
-        //sending Passwords to all users
-        $contestid = DB::table('contests')->where('status', 'Investigating')->get();
-        $contesters = DB::table('enrollments')->where('contestid', $contestid[0]->contestid)->get();
-        foreach ($contesters as $contester) {
-            $contesterEmail = $contester->email;
-            $thisuserusername = DB::table('users')->where('email', $contesterEmail)->get();
-            $contesterUsername = $thisuserusername[0]->username;
-            $pass_query = DB::table('enrollments')->where('email', $contesterEmail)->where('contestid', $contestid[0]->contestid)->get();
-            $password = md5($pass_query[0]->hash . $contesterUsername . env('APP_KEY'));
-            Mail::to($contesterEmail)->send(new zipPassword($password));
-            echo "Sent <br>";
-        }
-        $contesters = DB::table('voters')->where('contestid', $contestid[0]->contestid)->get();
-        foreach ($contesters as $contester) {
-            $contesterEmail = $contester->email;
-            $thisuserusername = DB::table('users')->where('email', $contesterEmail)->get();
-            $contesterUsername = $thisuserusername[0]->username;
-            $pass_query = DB::table('voters')->where('email', $contesterEmail)->where('contestid', $contestid[0]->contestid)->get();
-            $password = md5($pass_query[0]->hash . $contesterUsername . env('APP_KEY'));
-            Mail::to($contesterEmail)->send(new zipPassword($password));
-            // echo "Sent <br>";
-        }
-        return Redirect(route('admin.dashboard'));
     }
 }

@@ -11,19 +11,15 @@
     <link rel="shortcut icon" href="/favi.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/icon-set/style.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/chart.js/dist/Chart.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}">
 </head>
 
 <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
-    <script
-        src="{{ asset('assets/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js') }}">
+    <script src="{{ asset('assets/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js') }}">
     </script>
     <div id="searchDropdown" class="hs-unfold-content dropdown-unfold search-fullwidth d-md-none">
         <form class="input-group input-group-merge input-group-borderless">
@@ -55,14 +51,15 @@
         class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
         <div class="navbar-nav-wrap">
             <div class="navbar-brand-wrapper">
-                <!-- Logo -->
+                {{-- <!-- Logo -->
                 <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
                     <img class="navbar-brand-logo"
                         src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                     <img class="navbar-brand-logo-mini"
                         src="{{ asset('assets/svg/logos/logo-short.svg') }}" alt="Logo">
                 </a>
-                <!-- End Logo -->
+                <!-- End Logo --> --}}
+                <h2 class="text-uppercase">{{ env('APP_NAME') }}</h2>
             </div>
 
             <div class="navbar-nav-wrap-content-left">
@@ -309,10 +306,12 @@
             <div class="navbar-vertical-footer-offset">
                 <div class="navbar-brand-wrapper justify-content-between">
                     <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
-                        <img class="navbar-brand-logo"
+                        {{-- <img class="navbar-brand-logo"
                             src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                         <img class="navbar-brand-logo-mini"
-                            src="{{ asset('assets/svg/logos/logo-short.svg') }}" alt="Logo">
+                            src="{{ asset('assets/svg/logos/logo-short.svg') }}" alt="Logo"> --}}
+                        <h2 class="text-uppercase">{{ env('APP_NAME') }}</h2>
+
                     </a>
                     <button type="button"
                         class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
@@ -328,8 +327,8 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a class="js-nav-tooltip-link nav-link " href="{{ route('dashboard') }}"
-                                title="Layouts" data-placement="left">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('dashboard') }}" title="Layouts"
+                                data-placement="left">
                                 <i class="tio-dashboard nav-icon"></i>
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Dashboard</span>
@@ -346,7 +345,8 @@
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('advertisement.index') }}"
                                 title="Layouts" data-placement="left">
                                 <i class="tio-agenda-view nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Today Ads</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Today
+                                    Ads</span>
                             </a>
                         </li>
 
@@ -368,7 +368,8 @@
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('tokenToUsd') }}"
                                 title="Layouts" data-placement="left">
                                 <i class="tio-sync nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Token to USD</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Token to
+                                    USD</span>
                             </a>
                         </li>
 
@@ -379,16 +380,16 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a class="js-nav-tooltip-link nav-link " href="{{ route('profile') }}"
-                                title="Layouts" data-placement="left">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('profile') }}" title="Layouts"
+                                data-placement="left">
                                 <i class="tio-user nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">My
                                     Profile</span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="js-nav-tooltip-link nav-link " href="{{ route('profile') }}"
-                                title="Layouts" data-placement="left">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('profile') }}" title="Layouts"
+                                data-placement="left">
                                 <i class="tio-lock nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Change
                                     Password</span>
@@ -414,8 +415,7 @@
 
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="{{ route('support.create') }}"
-                                        title="Default">
+                                    <a class="nav-link " href="{{ route('support.create') }}" title="Default">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">In Progress</span>
                                     </a>
@@ -490,8 +490,7 @@
     </script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside.min.js') }}">
+    <script src="{{ asset('assets/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside.min.js') }}">
     </script>
     <script src="{{ asset('assets/vendor/hs-unfold/dist/hs-unfold.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/hs-form-search/dist/hs-form-search.min.js') }}">
@@ -500,8 +499,7 @@
     <script src="{{ asset('assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/chart.js.extensions/chartjs-extensions.js') }}">
     </script>
-    <script
-        src="{{ asset('assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}">
+    <script src="{{ asset('assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}">
     </script>
     <script src="{{ asset('assets/vendor/daterangepicker/moment.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/daterangepicker/daterangepicker.js') }}"></script>
@@ -514,18 +512,17 @@
     <script src="{{ asset('assets/js/theme.min.js') }}"></script>
     <script src="{{ asset('assets/js/hs.flatpickr.js') }}"></script>
     <script>
-        $(document).on('ready', function () {
+        $(document).on('ready', function() {
             // INITIALIZATION OF FLATPICKR
             // =======================================================
-            $('.js-flatpickr').each(function () {
+            $('.js-flatpickr').each(function() {
                 $.HSCore.components.HSFlatpickr.init($(this));
             });
         });
-
     </script>
     <script>
-        $(document).on('ready', function () {
-            $('.js-navbar-vertical-aside-toggle-invoker').click(function () {
+        $(document).on('ready', function() {
+            $('.js-navbar-vertical-aside-toggle-invoker').click(function() {
                 $('.js-navbar-vertical-aside-toggle-invoker i').tooltip('hide');
             });
             var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
@@ -533,18 +530,18 @@
                 boundary: 'window'
             })
 
-            $(".js-nav-tooltip-link").on("show.bs.tooltip", function (e) {
+            $(".js-nav-tooltip-link").on("show.bs.tooltip", function(e) {
                 if (!$("body").hasClass("navbar-vertical-aside-mini-mode")) {
                     return false;
                 }
             });
-            $('.js-hs-unfold-invoker').each(function () {
+            $('.js-hs-unfold-invoker').each(function() {
                 var unfold = new HSUnfold($(this)).init();
             });
-            $('.js-form-search').each(function () {
+            $('.js-form-search').each(function() {
                 new HSFormSearch($(this)).init()
             });
-            $('.js-select2-custom').each(function () {
+            $('.js-select2-custom').each(function() {
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
             Chart.plugins.unregister(ChartDataLabels);
@@ -557,7 +554,6 @@
                     'MMM D') + ' - ' + end.format('MMM D, YYYY'));
             }
         });
-
     </script>
     @yield('footer')
 </body>

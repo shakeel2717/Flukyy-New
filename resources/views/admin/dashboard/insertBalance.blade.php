@@ -22,9 +22,9 @@
                                 <div class="form-group">
                                     <label for="">Currency Type</label>
                                     <select name="currency" id="currency" class="form-control">
-                                        <option value="usd">USD</option>
-                                        <option value="token">Token</option>
-                                        <option value="reward">Reward</option>
+                                        <option value="USD">USD</option>
+                                        <option value="Token">Token</option>
+                                        <option value="Reward">Reward</option>
                                     </select>
                                 </div>
                             </div>

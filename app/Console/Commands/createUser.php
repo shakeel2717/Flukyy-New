@@ -57,7 +57,7 @@ class createUser extends Command
 
         contest::create([
             'contest' => "XFXS5DF4S6D5F4S",
-            'price' => 50,
+            'price' => 1,
             'status' => "Active",
             'participate' => 100,
         ]);

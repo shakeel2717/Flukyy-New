@@ -133,17 +133,12 @@
             <!-- Card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Total Used Token</h6>
+                    <h6 class="card-subtitle mb-2">Shared with Friends Tokens</h6>
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
                             <span class="js-counter display-4 text-dark"
-                                data-value="56">{{ env('APP_CURRENCY_SYMBOL') }}:
-                                {{ number_format(
-    userTransactions()->where('currency', 'Token')->where('sum', 'Out')->sum('amount'),
-    2,
-) }}
-                                {{ env('APP_CURRENCY_TOKEN') }}</span>
+                                data-value="56">0.00</span>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -182,7 +177,7 @@
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2">Particepate In Fluke</h6>
                     <hr>
-                    <p>Participate Price: {{ $Activecontest->price ?? 'No Contest Active' }} Token</p>
+                    <p>Participate Price: {{ $Activecontest->price ?? 'No Contest Active' }} Reward</p>
                     <p>Current Contest ID: {{ $Activecontest->contest ?? 'No Contest Active' }}</p>
                 </div>
                 <form action="{{ route('contestParticepateReq') }}" method="POST">

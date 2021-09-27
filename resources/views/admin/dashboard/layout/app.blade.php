@@ -50,13 +50,14 @@
         class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
         <div class="navbar-nav-wrap">
             <div class="navbar-brand-wrapper">
-                <!-- Logo -->
+                {{-- <!-- Logo -->
                 <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
                     <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                     <img class="navbar-brand-logo-mini" src="{{ asset('assets/svg/logos/logo-short.svg') }}"
                         alt="Logo">
                 </a>
-                <!-- End Logo -->
+                <!-- End Logo --> --}}
+                <h2 class="text-uppercase">{{ env('APP_NAME') }}</h2>
             </div>
 
             <div class="navbar-nav-wrap-content-left">
@@ -304,9 +305,10 @@
             <div class="navbar-vertical-footer-offset">
                 <div class="navbar-brand-wrapper justify-content-between">
                     <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
-                        <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
+                        {{-- <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                         <img class="navbar-brand-logo-mini" src="{{ asset('assets/svg/logos/logo-short.svg') }}"
-                            alt="Logo">
+                            alt="Logo"> --}}
+                            <h2 class="text-uppercase">{{ env('APP_NAME') }}</h2>
                     </a>
                     <button type="button"
                         class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
