@@ -293,4 +293,5 @@
             </div>
         </div>
     @endif
+    @include('inc.vote.index')
 @endsection

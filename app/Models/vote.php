@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class vote extends Model
 {
     use HasFactory;
+
+
+    public function user()
+    {
+        return $this->belongsTo(users::class);
+    }
 }
+
