@@ -59,7 +59,7 @@ class createUser extends Command
             'contest' => "XFXS5DF4S6D5F4S",
             'price' => 1,
             'status' => "Active",
-            'participate' => 100,
+            'participate' => 2,
         ]);
 
 
