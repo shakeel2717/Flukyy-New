@@ -46,9 +46,12 @@ class adminDashboard extends Controller
             'currency' => 'required',
             'amount' => 'required|numeric',
         ]);
+        // getting this user
+        $user = users::where('email', $validated['email'])->first();
+
         // inserting balance into user
         $task = new transaction();
-        $task->users_id = session('user')[0]->id;
+        $task->users_id = $user->id;
         $task->type = "Deposit";
         $task->status = "Approved";
         $task->sum = "In";

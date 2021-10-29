@@ -9,6 +9,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
+use App\Http\Controllers\VoteController;
 use App\Models\transaction;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
     
     Route::resource('advertisement', AdvertisementController::class);
+    Route::resource('vote', VoteController::class);
     Route::post('/contestParticepateReq', [contestController::class, 'contestParticepateReq'])->name('contestParticepateReq');
     
 

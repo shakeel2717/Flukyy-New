@@ -54,6 +54,25 @@ class createUser extends Command
             'status' => 'Active',
         ]);
 
+        users::create([
+            'fname' => 'zaiba',
+            'lname' => 'basharat',
+            'username' => 'zaiba2717',
+            'email' => 'zaiba2717@gmail.com',
+            'password' => 'asdfasdf',
+            'status' => 'Active',
+        ]);
+
+
+        users::create([
+            'fname' => 'mona',
+            'lname' => 'basharat',
+            'username' => 'mona2717',
+            'email' => 'mona2717@gmail.com',
+            'password' => 'asdfasdf',
+            'status' => 'Active',
+        ]);
+
 
         contest::create([
             'contest' => "XFXS5DF4S6D5F4S",

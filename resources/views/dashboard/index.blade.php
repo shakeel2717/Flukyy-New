@@ -171,6 +171,9 @@
             <!-- End Card -->
         </div>
     </div>
+    @if (count($Activecontest->participators->where('users_id',session('user')[0]->id)) > 0 || count($myVotes) > 1)
+        @include('inc.password')
+    @endif
     <div class="row gx-2 gx-lg-3">
         <div class="col-sm-6">
             <div class="card h-100">
@@ -201,9 +204,10 @@
                     <div class="hs-unfold">
                         <a class="js-hs-unfold-invoker btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
                             href="javascript:;" data-hs-unfold-options="{
-                                           &quot;target&quot;: &quot;#reportsOverviewDropdown1&quot;,
-                                           &quot;type&quot;: &quot;css-animation&quot;
-                                         }" data-hs-unfold-target="#reportsOverviewDropdown1" data-hs-unfold-invoker="">
+                                                                                                       &quot;target&quot;: &quot;#reportsOverviewDropdown1&quot;,
+                                                                                                       &quot;type&quot;: &quot;css-animation&quot;
+                                                                                                     }"
+                            data-hs-unfold-target="#reportsOverviewDropdown1" data-hs-unfold-invoker="">
                             <i class="tio-more-vertical"></i>
                         </a>
 
@@ -239,17 +243,17 @@
 
                 <!-- Body -->
                 <div class="card-body">
-                    <span class="h1 d-block mb-4">{{ count($Activecontest->participators) }} Participators</span>
+                    <span class="h1 d-block mb-4">{{ count($Activecontest->participators->where('type','Contester')) }} Participators</span>
 
                     <div class="progress h-25">
                         <div class="progress-bar" role="progressbar"
-                            style="width: {{ count($Activecontest->participators) }}%;"
-                            aria-valuenow="{{ count($Activecontest->participators) }}" aria-valuemin="0"
-                            aria-valuemax="100">{{ count($Activecontest->participators) }}</div>
+                            style="width: {{ count($Activecontest->participators->where('type','Contester')) }}%;"
+                            aria-valuenow="{{ count($Activecontest->participators->where('type','Contester')) }}" aria-valuemin="0"
+                            aria-valuemax="100">{{ count($Activecontest->participators->where('type','Contester')) }}</div>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
-                        <span>{{ count($Activecontest->participators) }}</span>
+                        <span>{{ count($Activecontest->participators->where('type','Contester')) }}</span>
                         <span>{{ $Activecontest->participate }}</span>
                     </div>
                 </div>
@@ -257,13 +261,33 @@
         </div>
     </div>
     <br>
-    @if (count($Activecontest->participators) >= $Activecontest->participate)
+    @if (count($Activecontest->participators) >= $Activecontest->participate && count($myVotes) < 1)
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Voting for Fluke</h2>
-                        
+                        <form action="{{ route('vote.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                @for ($i = 1; $i < 11; $i++)
+                                    <div class="col-md-4">
+                                        <h2 class="card-title mb-3">Voting for Fluke</h2>
+                                        <div class="border border-dark p-3">
+                                            <h4 class="">Vote from 1 to {{ $Activecontest->participate }}
+                                            </h4>
+                                            <label for="vote">Vote</label>
+                                            <input type="number" class="form-control" name="vote{{ $i }}"
+                                                id="vote{{ $i }}">
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input type="submit" value="Vote now" class="btn btn-primary m-4 px-4">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

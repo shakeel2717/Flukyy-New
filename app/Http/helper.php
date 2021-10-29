@@ -1,6 +1,7 @@
 <?php
 // Generating Random String
 
+use App\Models\contest;
 use App\Models\transaction;
 
 function random($qtd)
@@ -19,8 +20,8 @@ function random($qtd)
 function balanceUSD()
 {
     // gettin gall Balance In
-    $queryIn = transaction::where('sum','In')->usdBalance()->sum('amount');
-    $queryOut = transaction::where('sum','Out')->usdBalance()->sum('amount');
+    $queryIn = transaction::where('sum', 'In')->usdBalance()->sum('amount');
+    $queryOut = transaction::where('sum', 'Out')->usdBalance()->sum('amount');
     return $queryIn - $queryOut;
 }
 
@@ -28,8 +29,8 @@ function balanceUSD()
 function balanceReward()
 {
     // gettin gall Balance In
-    $queryIn = transaction::where('sum','In')->rewardBalance()->sum('amount');
-    $queryOut = transaction::where('sum','Out')->rewardBalance()->sum('amount');
+    $queryIn = transaction::where('sum', 'In')->rewardBalance()->sum('amount');
+    $queryOut = transaction::where('sum', 'Out')->rewardBalance()->sum('amount');
     return $queryIn - $queryOut;
 }
 
@@ -45,8 +46,18 @@ function userTransactions()
 function balanceToken()
 {
     // gettin gall Balance In
-    $queryIn = transaction::where('sum','In')->tokenBalance()->sum('amount');
-    $queryOut = transaction::where('sum','Out')->tokenBalance()->sum('amount');
+    $queryIn = transaction::where('sum', 'In')->tokenBalance()->sum('amount');
+    $queryOut = transaction::where('sum', 'Out')->tokenBalance()->sum('amount');
     return $queryIn - $queryOut;
 }
-?>
+
+// checking if contest is active
+function activeContest()
+{
+    $contestCheck = contest::where('status', 'Active')->count();
+    if ($contestCheck > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}

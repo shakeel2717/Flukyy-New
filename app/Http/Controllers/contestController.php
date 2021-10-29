@@ -63,8 +63,7 @@ class contestController extends Controller
             return redirect()->back()->withErrors('Sorry, There is no Free Space avaible for Participate.');
         }
 
-        $hash_code = rand(1, 5000);
-        // $hash_code = 100;
+        $hash_code = rand(1, $contestActive[0]->participate);
         $encrypted_hash_code = md5($hash_code);
         $zip_password = md5($encrypted_hash_code . session('user')[0]->username . env('APP_KEY'));
 
