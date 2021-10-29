@@ -90,7 +90,6 @@ class contestController extends Controller
         //creating text documeent with hash code
         $username = session('user')[0]->username;
         $filename = $username . $contestActive[0]->contest;
-        fopen("flukehashe/$filename.txt", "w") or die("Unable to Create file!");
         $myfile = fopen("Flukehashe/$filename.txt", "w") or die("Unable to Open file!");
         $txt = "Fluke ID:" . $hash_code;
         fwrite($myfile, $txt);

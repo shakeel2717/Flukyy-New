@@ -53,7 +53,8 @@
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
-                            <span class="js-counter display-4 text-dark" data-value="56">{{ number_format(balanceReward(),2) }}</span>
+                            <span class="js-counter display-4 text-dark"
+                                data-value="56">{{ number_format(balanceReward(), 2) }}</span>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -137,8 +138,7 @@
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
-                            <span class="js-counter display-4 text-dark"
-                                data-value="56">0.00</span>
+                            <span class="js-counter display-4 text-dark" data-value="56">0.00</span>
                         </div>
                     </div>
                     <!-- End Row -->
@@ -201,9 +201,9 @@
                     <div class="hs-unfold">
                         <a class="js-hs-unfold-invoker btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
                             href="javascript:;" data-hs-unfold-options="{
-                                       &quot;target&quot;: &quot;#reportsOverviewDropdown1&quot;,
-                                       &quot;type&quot;: &quot;css-animation&quot;
-                                     }" data-hs-unfold-target="#reportsOverviewDropdown1" data-hs-unfold-invoker="">
+                                           &quot;target&quot;: &quot;#reportsOverviewDropdown1&quot;,
+                                           &quot;type&quot;: &quot;css-animation&quot;
+                                         }" data-hs-unfold-target="#reportsOverviewDropdown1" data-hs-unfold-invoker="">
                             <i class="tio-more-vertical"></i>
                         </a>
 
@@ -242,16 +242,31 @@
                     <span class="h1 d-block mb-4">{{ count($Activecontest->participators) }} Participators</span>
 
                     <div class="progress h-25">
-                        <div class="progress-bar" role="progressbar" style="width: {{ count($Activecontest->participators) }}%;" aria-valuenow="{{ count($Activecontest->participators) }}"
-                            aria-valuemin="0" aria-valuemax="100">{{ count($Activecontest->participators) }}</div>
+                        <div class="progress-bar" role="progressbar"
+                            style="width: {{ count($Activecontest->participators) }}%;"
+                            aria-valuenow="{{ count($Activecontest->participators) }}" aria-valuemin="0"
+                            aria-valuemax="100">{{ count($Activecontest->participators) }}</div>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
                         <span>{{ count($Activecontest->participators) }}</span>
-                        <span>{{$Activecontest->participate}}</span>
+                        <span>{{ $Activecontest->participate }}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    @if (count($Activecontest->participators) >= $Activecontest->participate)
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Voting for Fluke</h2>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
