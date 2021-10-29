@@ -90,18 +90,19 @@ class contestController extends Controller
         //creating text documeent with hash code
         $username = session('user')[0]->username;
         $filename = $username . $contestActive[0]->contest;
-        $myfile = fopen("Flukehashe/$filename.txt", "w") or die("Unable to Open file!");
+        fopen("flukehashe/$filename.txt", "w") or die("Unable to Create file!");
+        $myfile = fopen("flukehashe/$filename.txt", "w") or die("Unable to Open file!");
         $txt = "Fluke ID:" . $hash_code;
         fwrite($myfile, $txt);
         fclose($myfile);
         $zip = new ZipArchive();
-        if ($zip->open("Flukehashe/$filename.zip", ZipArchive::CREATE) === TRUE) {
+        if ($zip->open("flukehashe/$filename.zip", ZipArchive::CREATE) === TRUE) {
             $zip->setPassword($zip_password); //set default password
-            $zip->addFile("Flukehashe/$filename.txt"); //add file
-            $zip->setEncryptionName("Flukehashe/$filename.txt", ZipArchive::EM_AES_256); //encrypt it
+            $zip->addFile("flukehashe/$filename.txt"); //add file
+            $zip->setEncryptionName("flukehashe/$filename.txt", ZipArchive::EM_AES_256); //encrypt it
             $zip->close();
             //deleting txt file for security resason
-            unlink("Flukehashe/$filename.txt");
+            unlink("flukehashe/$filename.txt");
         } else {
             echo "Sorry, but there is an Error, Please contact Support";
             die();
