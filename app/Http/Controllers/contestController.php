@@ -25,7 +25,7 @@ class contestController extends Controller
         }
         // changiong the status of this contest
         $contestCheckQuery->status = "Complete";
-        // $contestCheckQuery->save();
+        $contestCheckQuery->save();
 
         // getting the most voters in database to declare the winners
         $allVotes = DB::table('votes')
