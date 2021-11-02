@@ -18,11 +18,11 @@ class dashboard extends Controller
         // password for contester
         $participate = participate::where('users_id', session('user')[0]->id)->where('contest_id', $Activecontest->id)->get();
         $allVotes = DB::table('votes')
+        ->where('contest_id', $Activecontest->id)
             ->select('value', DB::raw('COUNT(value) as count'))
             ->groupBy('value')
             ->orderBy('count', 'desc')
             ->get();
-
 
 
         // return $allVotes;

@@ -293,5 +293,7 @@
             </div>
         </div>
     @endif
+    @if ($Activecontest->status != "Investigate")
     @include('inc.vote.index')
+    @endif
 @endsection
