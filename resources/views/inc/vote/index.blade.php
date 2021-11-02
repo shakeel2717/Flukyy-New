@@ -5,18 +5,18 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Value</th>
-                    <th scope="col">Voting Date</th>
+                    <th scope="col">Fluke ID</th>
+                    <th scope="col">Vote #</th>
+                    <th scope="col">Total Vote</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($allVotes as $vote)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{ $vote->user->fname }} {{ $vote->user->ahmad }}</td>
+                    <td>{{ $Activecontest->contest }}</td>
                     <td>{{ $vote->value }}</td>
-                    <td>{{ $vote->created_at }}</td>
+                    <td>{{ $vote->count }}</td>
                 </tr>
                     
                 @empty
