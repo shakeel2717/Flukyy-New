@@ -6,7 +6,7 @@
                 <h3 class="text-white">Your Password is:</h3>
                 <div class="form-group">
                     <input type="text" name="password" id="password" class="form-control bg-dark text-white"
-                        value=" {{ (isset($participate[0]->password)) ? $participate[0]->password : '***************' }} ">
+                        value=" {{ ($Activecontest->status == "Investigate") ? $participate[0]->password : '***************' }} ">
                 </div>
                 <?php $username = session('user')[0]->username ?>
                 <a href="{{ asset('flukehashe/'.$username . $Activecontest->contest.'.zip') }}" class="btn btn-primary">Download your File</a>
