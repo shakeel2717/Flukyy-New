@@ -261,7 +261,7 @@
         </div>
     </div>
     <br>
-    @if (count($Activecontest->participators) >= $Activecontest->participate && count($myVotes) < 1)
+    @if (count($Activecontest->participators) >= $Activecontest->participate && count($myVotes) < 1 && $Activecontest->status != "Investigate")
         <div class="row">
             <div class="col-12">
                 <div class="card">

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\contest;
 use App\Models\participate;
 use App\Models\transaction;
+use App\Models\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use ZipArchive;
 
 class contestController extends Controller
@@ -16,6 +18,57 @@ class contestController extends Controller
             'participate' => 'required|numeric',
             'price' => 'required|numeric',
         ]);
+        // getting current Contest
+        $contestCheckQuery = contest::where('status', "Investigate")->first();
+        if ($contestCheckQuery == "") {
+            return redirect()->back()->withErrors('A previews contest is not yet Finish. Please wait');
+        }
+        // changiong the status of this contest
+        $contestCheckQuery->status = "Complete";
+        // $contestCheckQuery->save();
+
+        // getting the most voters in database to declare the winners
+        $allVotes = DB::table('votes')
+            ->select('value', DB::raw('COUNT(value) as count'))
+            ->groupBy('value')
+            ->orderBy('count', 'desc')
+            ->first();
+        $winnerHash =  md5($allVotes->value);
+        // updating the status for the winner
+        $winnerQuery = participate::where('contest_id', $contestCheckQuery->id)->where('password', $winnerHash)->get();
+        $award = 1000;
+        foreach ($winnerQuery as $winner) {
+            // updating this user stautus in participate
+            $task = participate::find($winner->id);
+            $task->winner = 1;
+            $task->save();
+            // inserting this user Award
+            $task = new transaction();
+            $task->users_id = $winner->users_id;
+            $task->type = "Award";
+            $task->status = "Approved";
+            $task->sum = "In";
+            $task->currency = "USD";
+            $task->amount = $award;
+            $task->save();
+            // sponser award
+            if ($award == 1000) {
+                // getting this user data
+                $userDetail = users::find($winner->users_id);
+                if ($userDetail->refer != "Default") {
+                    $referDetail = users::where('username', $userDetail->refer)->first();
+                    $task = new transaction();
+                    $task->users_id = $referDetail->id;
+                    $task->type = "Award Commission";
+                    $task->status = "Approved";
+                    $task->sum = "In";
+                    $task->currency = "USD";
+                    $task->amount = 50;
+                    $task->save();
+                }
+            }
+            $award = 100;
+        }
         // inserting new fluke
         contestCreate:
         $contest = random(15);
@@ -62,16 +115,23 @@ class contestController extends Controller
         if ($contestActive[0]->participate <= count($contestActive[0]->participators)) {
             return redirect()->back()->withErrors('Sorry, There is no Free Space avaible for Participate.');
         }
-
+        generateHashPass:
         $hash_code = rand(1, $contestActive[0]->participate);
         $encrypted_hash_code = md5($hash_code);
-        $zip_password = md5($encrypted_hash_code . session('user')[0]->username . env('APP_KEY'));
+        // checking if this code already assinged to another memeber
+        $participateCodeSecurity = participate::where('contest_id', $contestActive[0]->id)->where('type', 'Contester')->where('password', $encrypted_hash_code)->count();
+        if ($participateCodeSecurity > 0) {
+            goto generateHashPass;
+        }
+
+        $zip_password = $encrypted_hash_code;
 
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;
         $task->contest_id = $contestActive[0]->id;
         $task->password = $encrypted_hash_code;
+        $task->hash = $zip_password;
         $task->save();
 
 

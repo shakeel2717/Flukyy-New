@@ -84,18 +84,27 @@ class VoteController extends Controller
             goto endVoteReq;
         }
 
-        
-        //creating text documeent with hash code
+
+
+
+        generateHashPass:
         $hash_code = rand(1, $contestCheck->participate);
         $encrypted_hash_code = md5($hash_code);
-        $zip_password = md5($encrypted_hash_code . session('user')[0]->username . env('APP_KEY'));
-        
+        // checking if this code already assinged to another memeber
+        $participateCodeSecurity = participate::where('contest_id', $contestCheck->id)->where('type', 'Voter')->where('password', $encrypted_hash_code)->count();
+        if ($participateCodeSecurity > 0) {
+            goto generateHashPass;
+        }
+        //creating text documeent with hash code
+        $zip_password = $encrypted_hash_code;
+
         // inserting participate Request
         $task = new participate();
         $task->users_id = session('user')[0]->id;
         $task->type = "Voter";
         $task->contest_id = $contestCheck->id;
         $task->password = $encrypted_hash_code;
+        $task->hash = $zip_password;
         $task->save();
 
         $username = session('user')[0]->username;

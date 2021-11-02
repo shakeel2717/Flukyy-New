@@ -19,6 +19,8 @@ class CreateParticipatesTable extends Migration
             $table->foreignId('contest_id')->constrained();
             $table->string('type')->default('Contester');
             $table->string('password')->default("Password");
+            $table->string('hash')->nullable();
+            $table->boolean('winner')->default(0);
             $table->timestamps();
         });
     }
