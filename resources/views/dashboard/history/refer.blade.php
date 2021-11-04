@@ -34,6 +34,7 @@
                                 <th>Name</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Account Status</th>
                                 <th>Create Date</th>
                             </tr>
                         </thead>
@@ -56,6 +57,9 @@
                                     </td>
                                     <td>
                                         <span class="d-block h5 mb-0">{{ $usd->email }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="d-block h5 mb-0">{{ $usd->status }}</span>
                                     </td>
                                     <td>
                                         <span class="d-block h5 mb-0">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($usd->created_at))->diffForHumans() }}</span>
