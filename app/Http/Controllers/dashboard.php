@@ -43,4 +43,14 @@ class dashboard extends Controller
             'allVotes' => $allVotes,
         ]);
     }
+
+
+
+    public function contestRecord()
+    {
+        $participate = participate::where('users_id',session('user')[0]->id)->paginate();
+        return view('dashboard.contest.index',[
+            'participate' => $participate,
+        ]);
+    }
 }

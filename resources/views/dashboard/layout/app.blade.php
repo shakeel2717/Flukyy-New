@@ -335,6 +335,22 @@
                             </a>
                         </li>
 
+
+                        <!-- Cotnest -->
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="Layouts">Contest History</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('contestRecord') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Contest Record</span>
+                            </a>
+                        </li>
+
                         <!-- Dashboards -->
                         <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">Advertisement</small>

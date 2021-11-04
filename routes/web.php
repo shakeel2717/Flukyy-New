@@ -69,6 +69,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::resource('vote', VoteController::class);
     Route::post('/contestParticepateReq', [contestController::class, 'contestParticepateReq'])->name('contestParticepateReq');
     
+    
+    Route::get('/contest-record', [dashboard::class, 'contestRecord'])->name('contestRecord');
+    
 
 
 });
