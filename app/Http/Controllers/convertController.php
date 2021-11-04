@@ -94,7 +94,7 @@ class convertController extends Controller
             $task = new transaction();
             $task->users_id = session('user')[0]->id;
             $task->status = "Approved";
-            $task->type = "Convert";
+            $task->type = "Earned free";
             $task->currency = "Reward";
             $task->amount = $adminQuery[0]->reward;
             $task->sum = "In";
