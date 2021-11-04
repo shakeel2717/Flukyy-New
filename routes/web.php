@@ -77,6 +77,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/usd/history', [HistoryController::class, 'usdHistory'])->name('usdHistory');
     Route::get('/token/history', [HistoryController::class, 'tokenHistory'])->name('tokenHistory');
     Route::get('/reward/history', [HistoryController::class, 'rewardHistory'])->name('rewardHistory');
+    Route::get('/refer/history', [HistoryController::class, 'referHistory'])->name('referHistory');
 
     
 

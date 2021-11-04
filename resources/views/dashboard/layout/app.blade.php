@@ -371,6 +371,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('referHistory') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Refer History</span>
+                            </a>
+                        </li>
+
 
                         <!-- Cotnest -->
                         <li class="nav-item">
