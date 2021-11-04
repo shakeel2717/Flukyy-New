@@ -47,8 +47,9 @@
                                             </div>
                                         </a>
                                     </td>
+                                    
                                     <td>
-                                        <span class="d-block h5 mb-0">{{ $row->password }}</span>
+                                        <span class="d-block h5 mb-0">{{ ($row->contest->status == "Complete" || $row->contest->status == "Investigate") ? $row->password : "*****************"  }}</span>
                                     </td>
                                     <td>
                                         <span class="d-block h5 mb-0">{{ ($row->winner == 1) ? "Yes" : "No" }}</span>
