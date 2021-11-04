@@ -335,6 +335,42 @@
                             </a>
                         </li>
 
+                        <!-- Cotnest -->
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="Layouts">Finance History</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('usdHistory') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">USD
+                                    History</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('rewardHistory') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Reward
+                                    History</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('tokenHistory') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Token
+                                    History</span>
+                            </a>
+                        </li>
+
 
                         <!-- Cotnest -->
                         <li class="nav-item">
@@ -347,7 +383,8 @@
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('contestRecord') }}"
                                 title="Layouts" data-placement="left">
                                 <i class="tio-agenda-view nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Contest Record</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Contest
+                                    Record</span>
                             </a>
                         </li>
 
@@ -394,7 +431,8 @@
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('tokenShare') }}"
                                 title="Layouts" data-placement="left">
                                 <i class="tio-sync nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Share Token</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Share
+                                    Token</span>
                             </a>
                         </li>
 

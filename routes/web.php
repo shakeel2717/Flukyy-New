@@ -6,6 +6,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\contestController;
 use App\Http\Controllers\convertController;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
@@ -71,6 +72,12 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     
     
     Route::get('/contest-record', [dashboard::class, 'contestRecord'])->name('contestRecord');
+    
+    
+    Route::get('/usd/history', [HistoryController::class, 'usdHistory'])->name('usdHistory');
+    Route::get('/token/history', [HistoryController::class, 'tokenHistory'])->name('tokenHistory');
+    Route::get('/reward/history', [HistoryController::class, 'rewardHistory'])->name('rewardHistory');
+
     
 
 
