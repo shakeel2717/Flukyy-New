@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use App\Models\transaction;
+use App\Models\users;
 use Illuminate\Http\Request;
 
 class convertController extends Controller
@@ -116,4 +117,51 @@ class convertController extends Controller
 
 
 
+    public function tokenShare()
+    {
+        return view('dashboard.convert.tokenShare');
+    }
+
+
+    public function tokenShareReq(Request $request)
+    {
+        $validated = $request->validate([
+            'amount' => 'required|numeric',
+            'username' => 'required|alpha_num|min:5|max:30|exists:users',
+        ]);
+
+        if (balanceUSD() < $validated['amount']) {
+            return redirect()->back()->withErrors('Insufficent Balance');
+        }
+
+        // checking if username is not same with logged in user
+        if ($validated['username'] == session('user')[0]->username) {
+            return redirect()->back()->withErrors('Invalid Username, Please Choose Another Account');
+        }
+
+        // inserting USD Transaction
+        $task = new transaction();
+        $task->users_id = session('user')[0]->id;
+        $task->status = "Approved";
+        $task->type = "Share";
+        $task->currency = "USD";
+        $task->amount = $validated['amount'];
+        $task->sum = "Out";
+        $task->save();
+
+        // getting other user detail
+        $query = users::where('username', $validated['username'])->first();
+
+        // inserting balance into user
+        $task = new transaction();
+        $task->users_id = $query->id;
+        $task->type = "Deposit";
+        $task->status = "Approved";
+        $task->sum = "In";
+        $task->currency = "USD";
+        $task->amount = $validated['amount'];
+        $task->save();
+        $name =  $query->fname . " " . $query->lname;
+        return redirect()->back()->with('message', 'Token Shared with ' . $name . ' Successfully');
+    }
 }

@@ -61,6 +61,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     
     Route::get('/token-usd', [convertController::class, 'tokenToUsd'])->name('tokenToUsd');
     Route::post('/token-usd', [convertController::class, 'tokenToUsdReq'])->name('tokenToUsdReq');
+    Route::get('/token-share', [convertController::class, 'tokenShare'])->name('tokenShare');
+    Route::post('/token-share', [convertController::class, 'tokenShareReq'])->name('tokenShareReq');
+    
     
     Route::resource('advertisement', AdvertisementController::class);
     Route::resource('vote', VoteController::class);

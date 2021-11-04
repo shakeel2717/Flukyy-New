@@ -373,6 +373,15 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('tokenShare') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-sync nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Share Token</span>
+                            </a>
+                        </li>
+
                         <!-- Dashboards -->
                         <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">My Account</small>
