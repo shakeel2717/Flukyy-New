@@ -523,9 +523,9 @@
                     <div class="col-sm-auto">
                         <!-- Dropdown -->
                         <div class="dropdown">
-                            <button class="btn btn-primary " type="button">
-                                Contest Section
-                            </button>
+                            <a href="{{ route('contestRecord') }}" class="btn btn-primary ">
+                                My Contest Record
+                            </a>
                         </div>
                         <!-- End Dropdown -->
                     </div>
