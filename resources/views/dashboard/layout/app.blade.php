@@ -398,6 +398,36 @@
 
                         <!-- Dashboards -->
                         <li class="nav-item">
+                            <small class="nav-subtitle" title="Layouts">My Coupons</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('coupon.index') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">My Coupons</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('coupon.create') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Generate Coupons</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('coupon.activate') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-agenda-view nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Activate Coupons</span>
+                            </a>
+                        </li>
+
+                        <!-- Dashboards -->
+                        <li class="nav-item">
                             <small class="nav-subtitle" title="Layouts">Advertisement</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>

@@ -13,6 +13,7 @@ use App\Http\Controllers\userAuth;
 use App\Http\Controllers\VoteController;
 use App\Models\transaction;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CouponController;
 
 Route::redirect('/', 'authentication/login');
 Route::redirect('/login', 'authentication/login');
@@ -78,6 +79,11 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/token/history', [HistoryController::class, 'tokenHistory'])->name('tokenHistory');
     Route::get('/reward/history', [HistoryController::class, 'rewardHistory'])->name('rewardHistory');
     Route::get('/refer/history', [HistoryController::class, 'referHistory'])->name('referHistory');
+    Route::get('/coupon/activate', [CouponController::class, 'couponActivate'])->name('coupon.activate');
+    Route::post('/coupon/activate', [CouponController::class, 'couponActiveReq'])->name('couponActive.store');
+    
+    Route::resource('coupon', CouponController::class);
+
 
     
 
