@@ -99,10 +99,10 @@
                                 placeholder="TotalParticipate Allowed">
                         </div>
                         <div class="form-group">
-                          <label for="">Contest Price</label>
-                          <input type="text" name="price" id="price" class="form-control"
-                              placeholder="Token Price" value="{{ $adminQuery->contest }}">
-                      </div>
+                            <label for="">Contest Price</label>
+                            <input type="text" name="price" id="price" class="form-control" placeholder="Token Price"
+                                value="{{ $adminQuery->contest }}">
+                        </div>
                         {{-- <div class="form-group">
                             <label for="address">Shipping Address</label> <span><a
                                     href="{{ route('address.index') }}">Manage Address</a></span>
@@ -116,6 +116,33 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <input type="submit" class="btn btn-block btn-primary" value="Create New Contest">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2">Particepate In Fluke</h6>
+                    <hr>
+                    <p>Coupon Buy USD Amount: {{ $adminQuery->coupon }} USD</p>
+                    <p>Update Price for Coupon Buy LIMIT, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
+                        cumque ratione officia molestiae accusamus atque laboriosam fugiat repellendus obcaecati. Blanditiis
+                        minus pariatur est quibusdam cupiditate, eligendi maiores rem repudiandae porro</p>
+                </div>
+                <form action="{{ route('coupon.admin.store') }}" method="POST">
+                    @csrf
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Price in USD</label>
+                            <input type="text" name="coupon" id="coupon" class="form-control"
+                                value="{{ $adminQuery->coupon }}">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-primary" value="Update Coupon BUY Price">
                         </div>
                     </div>
                 </form>

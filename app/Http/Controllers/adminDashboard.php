@@ -60,4 +60,15 @@ class adminDashboard extends Controller
         $task->save();
         return redirect()->back()->with('message', 'Balance Added into User Accont Successfully');
     }
+    
+    public function couponAdmin(Request $request)
+    {
+        $validated = $request->validate([
+            'coupon' => 'required'
+        ]);
+        $task = admin::first();
+        $task->coupon = $validated['coupon'];
+        $task->save();
+        return redirect()->back()->with('message', 'Task Completed Successfully');
+    }
 }

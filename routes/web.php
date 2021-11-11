@@ -99,5 +99,7 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/insert-balance', [adminDashboard::class, 'insertBalance'])->name('insertBalance');
     Route::post('/insert-balance', [adminDashboard::class, 'insertBalanceReq'])->name('insertBalanceReq');
     Route::post('/contestStore', [contestController::class, 'store'])->name('contest.store');
+    Route::post('/couponAdmin', [adminDashboard::class, 'couponAdmin'])->name('coupon.admin.store');
+    
     
 });
