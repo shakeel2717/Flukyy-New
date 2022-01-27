@@ -7,6 +7,7 @@ use App\Http\Controllers\contestController;
 use App\Http\Controllers\convertController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
@@ -15,7 +16,7 @@ use App\Models\transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
 
-Route::redirect('/', 'authentication/login');
+Route::get('/',[LandingPageController::class ,'index'])->name('landing.index');
 Route::redirect('/login', 'authentication/login');
 Route::redirect('/register', 'authentication/register');
 Route::redirect('/reset', 'authentication/reset');
