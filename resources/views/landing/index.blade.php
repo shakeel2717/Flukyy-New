@@ -19,8 +19,8 @@
                     </div><!-- .entry-content -->
 
                     <div class="entry-footer mt-5">
-                        <a href="/register" class="btn gradient-bg m-2">Open an Account</a>
-                        <a href="/login" class="btn gradient-bg m-2">Sign in</a>
+                        <a href="{{ route('register') }}" class="btn gradient-bg m-2">Open an Account</a>
+                        <a href="{{ route('login') }}" class="btn gradient-bg m-2">Sign in</a>
                     </div><!-- .entry-footer -->
                 </div><!-- .welcome-content -->
             </div><!-- .col -->
@@ -227,17 +227,7 @@
                 @php
                 $detailUsers = DB::table('enrollments')->limit(5)->latest()->get();
                 @endphp
-                @foreach($detailUsers as $user)
-                    <tr>
-                        <td><?php $username = DB::table('users')->where('email',$user->email)->orderBy('id', 'desc')->get(); 
-                            echo $username[0]->username;
-                        ?></td>
-                        <td>{{ $user->amount }}</td>
-                        <td>{{ $user->contestid }}</td>
-                        <td>{{ $username[0]->country }}</td>
-                    </tr>
-                @endforeach
-                    
+                  
                 </tbody>
                 </table> --}}
         </div>
@@ -259,7 +249,7 @@
                     </div><!-- .entry-content -->
 
                     <div class="entry-footer mt-5">
-                        <a href="/register" class="btn gradient-bg mr-2">Open an Account</a>
+                        <a href="{{ route('register') }}" class="btn gradient-bg mr-2">Open an Account</a>
                     </div><!-- .entry-footer -->
                 </div><!-- .welcome-content -->
             </div><!-- .col -->
@@ -281,7 +271,7 @@
             <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
                 <h2>Register New Account Today!</h2>
 
-                <a class="btn orange-border" href="/register">Register Now</a>
+                <a class="btn orange-border" href="{{ route('register') }}">Register Now</a>
             </div>
         </div>
     </div>
