@@ -4,6 +4,7 @@
         @csrf
         <div class="text-center mb-5">
             <h1 class="display-4">Welcome Back!</h1>
+            <h1 class="display-4">Welcome Back!</h1>
             <p>Don't have an account yet? <a href="{{ route('register') }}">Sign up here</a>
             </p>
         </div>
